@@ -18,10 +18,10 @@ First, you need to install **VTube Studio** from Steam.
 ### 2. Enable API Connection
 1. Open **VTube Studio**.
 2. Click anywhere on the main screen **twice** to open the **left-side menu**.
-3. Click the **Settings (gear icon)** ![Settings Icon](SetupImages/SettingsIcon.png).
-4. Ensure you are in the **General Settings** ![General Settings](SetupImages/GeneralSettings.png).
+3. Click the **Settings (gear icon)** <img src="SetupImages/SettingsIcon.png" width="50%">
+4. Ensure you are in the **General Settings** <img src="SetupImages/GeneralSettings.png" width="50%">
 5. Scroll down on the **right-side menu** until you find the **API Connection** option.
-6. Turn on the **API Connection** ![API Connection](SetupImages/APIConnection.png).
+6. Turn on the **API Connection** <img src="SetupImages/APIConnection.png" width="50%">
 
 ### 3. Run `vts_api.py`
 Now, you can run `vts_api.py`. On the **first run**, you will not have the plugin connected nor an API key, but this script will set it up for you.
@@ -30,7 +30,7 @@ Now, you can run `vts_api.py`. On the **first run**, you will not have the plugi
    ```sh
    python vts_api.py
    ```
-2. The script will make an **authentication request**, which you must **approve within VTube Studio** ![Authentication Request](SetupImages/AuthenticationRequest.png).
+2. The script will make an **authentication request**, which you must **approve within VTube Studio** <img src="SetupImages/AuthenticationRequest.png" width="50%">
 3. After approval:
    - Your plugin will now be **registered** within the API.
    - Your **API key** will be saved in a `.env` file (if it doesn’t exist, it will be created automatically).
