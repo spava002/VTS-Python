@@ -9,7 +9,7 @@ class VTSRequester():
         Also requires an Event to handle thread execution turns."""
         self.ws = ws
         self.ws_event = ws_event
-        self.non_main_thread_blocking_requests = ["parameter_inject", "subscription", "auth_request", "auth_token_request"]
+        self.non_main_thread_blocking_requests = ["parameter_inject"]
 
     def base_request(
             self, 
@@ -26,8 +26,8 @@ class VTSRequester():
         }
         self.ws.send(json.dumps(request))
 
-        # Block the ws_thread to process the current request before continuing
         if request_id not in self.non_main_thread_blocking_requests:
+            # Block the ws_thread to process the current request before continuing
             self.ws_event.clear()
             self.ws_event.wait()
 
@@ -92,6 +92,25 @@ class VTSRequester():
         request_id = "model_current"
         message_type = "CurrentModelRequest"
         self.base_request(request_id, message_type)
+
+    def request_item_list(
+            self,
+            include_available_spots: bool = True,
+            include_item_instances_in_scene: bool = True,
+            include_available_item_files: bool = False,
+            only_items_with_file_name: str = "",
+            only_items_with_instance_id: str = ""
+        ):
+        request_id = "item_list"
+        message_type = "ItemListRequest"
+        data = {
+            "includeAvailableSpots": include_available_spots,
+            "includeItemInstancesInScene": include_item_instances_in_scene,
+            "includeAvailableItemFiles": include_available_item_files,
+            "onlyItemsWithFileName": only_items_with_file_name,
+            "onlyItemsWithInstanceID": only_items_with_instance_id
+        }
+        self.base_request(request_id, message_type, data)
 
     def request_item_load(
             self, 
