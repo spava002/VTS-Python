@@ -177,19 +177,10 @@ class VTSRequester():
     def request_item_pin(
             self,
             item_id: str,
-            model_id: str,
-            art_mesh_id: str,
-            vertex_id1: int,
-            vertex_id2: int,
-            vertex_id3: int,
-            vertex_weight1: float,
-            vertex_weight2: float,
-            vertex_weight3: float,
+            pin_info: Dict,
             angle_relative_to: str = "RelativeToModel",
             size_relative_to: str = "RelativeToWorld",
             vertex_pin_type: str = "Provided",
-            angle: float = 0,
-            size: float = 0.32
         ):
         request_id = "item_pin"
         message_type = "ItemPinRequest"
@@ -199,18 +190,7 @@ class VTSRequester():
             "angleRelativeTo": angle_relative_to,
             "sizeRelativeTo": size_relative_to,
             "vertexPinType": vertex_pin_type,
-            "pinInfo": {
-                "modelID": model_id,
-                "artMeshID": art_mesh_id,
-                "angle": angle,
-                "size": size,
-                "vertexID1": vertex_id1,
-                "vertexID2": vertex_id2,
-                "vertexID3": vertex_id3,
-                "vertexWeight1": vertex_weight1,
-                "vertexWeight2": vertex_weight2,
-                "vertexWeight3": vertex_weight3
-            }
+            "pinInfo": pin_info
         }
         self.base_request(request_id, message_type, data)
 
